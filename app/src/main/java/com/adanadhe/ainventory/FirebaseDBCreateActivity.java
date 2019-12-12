@@ -64,42 +64,58 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
         // mengambil referensi ke Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
-        // kode yang dipanggil ketika tombol Submit diklik
-        btSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())){
-                    submitBarang(new Barang(etNama.getText().toString(), etMerk.getText().toString(), etHarga.getText().toString()));
+        final Barang barang = (Barang) getIntent().getSerializableExtra("data");
 
-                    // notif
-                    TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
-                    NOTIFICATION_TITLE = "Barang baru ditambahkan";
-                    NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." +  etHarga.getText().toString() + ")";
+        if (barang != null) {
+            etNama.setText(barang.getNama());
+            etMerk.setText(barang.getMerk());
+            etHarga.setText(barang.getHarga());
+            btSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    barang.setNama(etNama.getText().toString());
+                    barang.setMerk(etMerk.getText().toString());
+                    barang.setHarga(etHarga.getText().toString());
 
-                    JSONObject notification = new JSONObject();
-                    JSONObject notifcationBody = new JSONObject();
-                    try {
-                        notifcationBody.put("title", NOTIFICATION_TITLE);
-                        notifcationBody.put("message", NOTIFICATION_MESSAGE);
-
-                        notification.put("to", TOPIC);
-                        notification.put("data", notifcationBody);
-                    } catch (JSONException e) {
-                        Log.e(TAG, "onCreate: " + e.getMessage() );
-                    }
-                    sendNotification(notification);
-
+                    updateBarang(barang);
                 }
-                else
-                    Snackbar.make(findViewById(R.id.bt_submit), "Data barang tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+            });
+        } else {
+            btSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())){
+                        submitBarang(new Barang(etNama.getText().toString(), etMerk.getText().toString(), etHarga.getText().toString()));
 
-                InputMethodManager imm = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(
-                        etNama.getWindowToken(), 0);
-            }
-        });
+                        // notif
+                        TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
+                        NOTIFICATION_TITLE = "Barang baru ditambahkan";
+                        NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." +  etHarga.getText().toString() + ")";
 
+                        JSONObject notification = new JSONObject();
+                        JSONObject notifcationBody = new JSONObject();
+                        try {
+                            notifcationBody.put("title", NOTIFICATION_TITLE);
+                            notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                            notification.put("to", TOPIC);
+                            notification.put("data", notifcationBody);
+                        } catch (JSONException e) {
+                            Log.e(TAG, "onCreate: " + e.getMessage() );
+                        }
+                        sendNotification(notification);
+
+                    }
+                    else
+                        Snackbar.make(findViewById(R.id.bt_submit), "Data barang tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+
+                    InputMethodManager imm = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(
+                            etNama.getWindowToken(), 0);
+                }
+            });
+        }
     }
 
     private boolean isEmpty(String s) {
