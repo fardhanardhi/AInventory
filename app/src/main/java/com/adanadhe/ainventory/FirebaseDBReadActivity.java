@@ -40,10 +40,10 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
          */
         setContentView(R.layout.activity_db_read);
 
-        Window mWindow = getWindow();
-        mWindow.getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        Window mWindow = getWindow();
+//        mWindow.getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         /**
          * Inisialisasi RecyclerView & komponennya

@@ -56,10 +56,10 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db_create);
 
-        Window mWindow = getWindow();
-        mWindow.getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        Window mWindow = getWindow();
+//        mWindow.getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         // inisialisasi fields EditText dan Button
         etNama = (EditText) findViewById(R.id.et_namabarang);
