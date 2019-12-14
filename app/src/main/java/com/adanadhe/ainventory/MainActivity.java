@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     EditText edtMessage;
 
     Button btCreateDB;
-     Button btViewDB;
-     Switch toggle;
+    Button btViewDB;
+    ImageView btnSettings;
 
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
     final private String serverKey = "key=" + "AAAA3PRkq-U:APA91bFlh3Mac-doL9VuEtRtJtZSFXDmQGSFiiUrWhMd7lJ_2iEpZ1N9OkKUOxnj9Jgs_gHgLvauU1dUlPc_ujC_6BF9kbmQElJA0-YGlUPefrJwXqSxI-kb4-_WmaHZ8wn9X_rob928";
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
 
-        if(useDarkMode) {
+        if (useDarkMode) {
             setTheme(R.style.ActivityThemeDark);
         }
 
@@ -67,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         btCreateDB = findViewById(R.id.bt_createdata);
         btViewDB = findViewById(R.id.bt_viewdata);
-        toggle = findViewById(R.id.switchCompat);
+        btnSettings = findViewById(R.id.btnSettings);
 
-        toggle.setChecked(useDarkMode);
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,28 +106,31 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // kode untuk tutorial selanjutnya
                 startActivity(FirebaseDBReadActivity.getActIntent(MainActivity.this));
-
             }
         });
 
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
-                toggleDarkMode(isChecked);
+            public void onClick(View view) {
+                startActivity(SettingsActivity.getActIntent(MainActivity.this));
             }
         });
+
+
     }
 
-    private void toggleDarkMode(boolean darkMode) {
-        SharedPreferences.Editor editor = getSharedPreferences("SETTINGS", MODE_PRIVATE).edit();
-        editor.putBoolean("DARK_MODE", darkMode);
-        editor.apply();
+    @Override
+    protected void onRestart() {
+        super.onRestart();
 
-        Intent intent = getIntent();
-        finish();
+        SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
+        boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
 
-        startActivity(intent);
-        this.overridePendingTransition(0,0);
+        if (useDarkMode) {
+            setTheme(R.style.ActivityThemeDark);
+        }
+        recreate();
+
     }
 
     private void sendNotification(JSONObject notification) {

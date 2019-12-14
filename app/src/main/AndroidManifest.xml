@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ActivityThemeLight">
-
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,19 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FirebaseDBCreateActivity" />
+        <activity android:name=".FirebaseDBReadActivity" />
+        <activity android:name=".FirebaseDBReadSingleActivity" />
 
-        <activity android:name=".FirebaseDBCreateActivity"/>
-        <activity android:name=".FirebaseDBReadActivity"/>
-        <activity android:name=".FirebaseDBReadSingleActivity"/>
-
-        <service
-            android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -41,7 +40,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

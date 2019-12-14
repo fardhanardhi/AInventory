@@ -4,25 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="?android:windowBackground"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="?android:windowBackground">
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/lambang" />
+
 
     <TextView
         android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Judul"
-        android:textColor="?attr/primaryTextColor"
-        />
+        android:textColor="?attr/primaryTextColor" />
 
     <EditText
         android:id="@+id/judulnya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="?attr/primaryTextColor"
-        android:backgroundTint="?attr/accentColor"/>
+        android:backgroundTint="?attr/accentColor"
+        android:textColor="?attr/primaryTextColor" />
 
     <TextView
         android:id="@+id/pesan"
@@ -30,45 +37,46 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Pesan"
-        android:textColor="?attr/primaryTextColor"/>
+        android:textColor="?attr/primaryTextColor" />
 
     <EditText
         android:id="@+id/pesannya"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:textColor="?attr/primaryTextColor"
-        android:backgroundTint="?attr/accentColor"/>
+        android:backgroundTint="?attr/accentColor"
+        android:textColor="?attr/primaryTextColor" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="SUBMIT"
         android:backgroundTint="?attr/primaryColor"
-        android:textColor="?attr/invertTextColor"/>
+        android:text="SUBMIT"
+        android:textColor="?attr/invertTextColor" />
 
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/bt_createdata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tambah Data"
-        android:backgroundTint="?attr/secondaryColor"/>
+        android:layout_marginTop="20dp"
+        android:backgroundTint="?attr/secondaryColor"
+        android:text="Tambah Data" />
 
     <Button
-        android:layout_marginTop="5dp"
         android:id="@+id/bt_viewdata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lihat Data"
-        android:backgroundTint="?attr/secondaryColor"/>
+        android:layout_marginTop="5dp"
+        android:backgroundTint="?attr/secondaryColor"
+        android:text="Lihat Data" />
 
-    <Switch
-        android:id="@+id/switchCompat"
+    <ImageView
+        android:id="@+id/btnSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_settings_black_24dp"
+        android:tint="?attr/primaryColor" />
 </LinearLayout>

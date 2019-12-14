@@ -18,8 +18,10 @@
         <item name="secondaryColor">@color/primaryDark</item>
         <item name="primaryTextColor">#33343B</item>
         <item name="secondaryTextColor">#8033343B</item>
+        <item name="cardTextColor">@color/white</item>
         <item name="invertTextColor">@color/white</item>
         <item name="accentColor">#8033343B</item>
+        <item name="cardColor">@color/primary</item>
     </style>
 
     <!-- Dark base activity theme -->
@@ -27,9 +29,11 @@
         <item name="primaryColor">@color/white</item>
         <item name="secondaryColor">@color/primary</item>
         <item name="primaryTextColor">#F4F4F6</item>
+        <item name="cardTextColor">@color/white</item>
         <item name="secondaryTextColor">#96F4F4F6</item>
         <item name="invertTextColor">#33343B</item>
         <item name="accentColor">@color/primary</item>
+        <item name="cardColor">#33343B</item>
     </style>
 
     <!-- Specific Feed activity theme -->
