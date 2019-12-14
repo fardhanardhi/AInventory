@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBarangRecyclerView.ViewHolder> {
@@ -24,7 +25,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
          * Inisiasi data dan variabel yang akan digunakan
          */
         daftarBarang = barangs;
-        context = ctx;
+        context = ;
         listener = (FirebaseDBReadActivity)ctx;
     }
 

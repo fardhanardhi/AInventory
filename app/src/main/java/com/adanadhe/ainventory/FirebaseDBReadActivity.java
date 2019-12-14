@@ -3,7 +3,9 @@ package com.adanadhe.ainventory;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -18,10 +20,11 @@ import com.google.firebase.database.annotations.Nullable;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FirebaseDBReadActivity extends AppCompatActivity implements AdapterBarangRecyclerView.FirebaseDataListener {
+public class FirebaseDBReadActivity extends Fragment implements AdapterBarangRecyclerView.FirebaseDataListener {
 
     /**
      * Mendefinisikan variable yang akan dipakai
@@ -33,12 +36,19 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
     private ArrayList<Barang> daftarBarang;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_db_read, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         super.onCreate(savedInstanceState);
         /**
          * Mengeset layout
          */
-        setContentView(R.layout.activity_db_read);
+//        setContentView(R.layout.activity_db_read);
 
 //        Window mWindow = getWindow();
 //        mWindow.getDecorView().setSystemUiVisibility(
@@ -48,9 +58,9 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
         /**
          * Inisialisasi RecyclerView & komponennya
          */
-        rvView = (RecyclerView) findViewById(R.id.rv_main);
+        rvView = (RecyclerView) getView().findViewById(R.id.rv_main);
         rvView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(getActivity());
         rvView.setLayoutManager(layoutManager);
 
         /**
@@ -89,7 +99,7 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
                  * Inisialisasi adapter dan data barang dalam bentuk ArrayList
                  * dan mengeset Adapter ke dalam RecyclerView
                  */
-                adapter = new AdapterBarangRecyclerView(daftarBarang, FirebaseDBReadActivity.this);
+                adapter = new AdapterBarangRecyclerView(daftarBarang, getContext());
                 rvView.setAdapter(adapter);
             }
 
@@ -121,7 +131,7 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
         if(database!=null){            database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(FirebaseDBReadActivity.this,"success delete", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"success delete", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/action_inventory"
+    android:title="Inventory"
+    android:icon="@drawable/logo_hitam" />
+<item android:id="@+id/action_add"
+    android:title="Add Data"
+    android:icon="@drawable/logo_tambah" />
+<item android:id="@+id/action_setting"
+    android:title="Setting"
+    android:icon="@drawable/setting" />
+</menu>

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -30,8 +32,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class FirebaseDBCreateActivity extends AppCompatActivity {
+public class FirebaseDBCreateActivity extends Fragment {
 
     // variable yang merefers ke Firebase Realtime Database
     private DatabaseReference database;
@@ -52,9 +55,16 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
     String TOPIC;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_db_create, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_db_create);
+//        setContentView(R.layout.activity_db_create);
 
 //        Window mWindow = getWindow();
 //        mWindow.getDecorView().setSystemUiVisibility(
@@ -62,15 +72,15 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
 //                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         // inisialisasi fields EditText dan Button
-        etNama = (EditText) findViewById(R.id.et_namabarang);
-        etMerk = (EditText) findViewById(R.id.et_merkbarang);
-        etHarga = (EditText) findViewById(R.id.et_hargabarang);
-        btSubmit = (Button) findViewById(R.id.bt_submit);
+        etNama = (EditText) getView().findViewById(R.id.et_namabarang);
+        etMerk = (EditText) getView().findViewById(R.id.et_merkbarang);
+        etHarga = (EditText) getView().findViewById(R.id.et_hargabarang);
+        btSubmit = (Button) getView().findViewById(R.id.bt_submit);
 
         // mengambil referensi ke Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
-        final Barang barang = (Barang) getIntent().getSerializableExtra("data");
+        final Barang barang = (Barang) getActivity().getIntent().getSerializableExtra("data");
 
         if (barang != null) {
             etNama.setText(barang.getNama());
@@ -90,13 +100,13 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
             btSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())){
+                    if (!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())) {
                         submitBarang(new Barang(etNama.getText().toString(), etMerk.getText().toString(), etHarga.getText().toString()));
 
                         // notif
                         TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
                         NOTIFICATION_TITLE = "Barang baru ditambahkan";
-                        NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." +  etHarga.getText().toString() + ")";
+                        NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." + etHarga.getText().toString() + ")";
 
                         JSONObject notification = new JSONObject();
                         JSONObject notifcationBody = new JSONObject();
@@ -107,16 +117,15 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
                             notification.put("to", TOPIC);
                             notification.put("data", notifcationBody);
                         } catch (JSONException e) {
-                            Log.e(TAG, "onCreate: " + e.getMessage() );
+                            Log.e(TAG, "onCreate: " + e.getMessage());
                         }
                         sendNotification(notification);
 
-                    }
-                    else
-                        Snackbar.make(findViewById(R.id.bt_submit), "Data barang tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+                    } else
+                        Snackbar.make(getView().findViewById(R.id.bt_submit), "Data barang tidak boleh kosong", Snackbar.LENGTH_LONG).show();
 
                     InputMethodManager imm = (InputMethodManager)
-                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(
                             etNama.getWindowToken(), 0);
                 }
@@ -137,17 +146,17 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
         database.child("barang") //akses parent index, ibaratnya seperti nama tabel
                 .child(barang.getKey()) //select barang berdasarkan key
                 .setValue(barang) //set value barang yang baru
-                .addOnSuccessListener(this, new OnSuccessListener<Void>() {
+                .addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
                         /**
                          * Baris kode yang akan dipanggil apabila proses update barang sukses
                          */
-                        Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
+                        Snackbar.make(getView().findViewById(R.id.bt_submit), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                finish();
+                                getActivity().finish();
                             }
                         }).show();
                     }
@@ -160,13 +169,13 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
          * dan juga kita set onSuccessListener yang berisi kode yang akan dijalankan
          * ketika data berhasil ditambahkan
          */
-        database.child("barang").push().setValue(barang).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+        database.child("barang").push().setValue(barang).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 etNama.setText("");
                 etMerk.setText("");
                 etHarga.setText("");
-                Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil ditambahkan", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getView().findViewById(R.id.bt_submit), "Data berhasil ditambahkan", Snackbar.LENGTH_LONG).show();
             }
         });
     }
@@ -190,7 +199,7 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(FirebaseDBCreateActivity.this, "Request error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Request error", Toast.LENGTH_LONG).show();
                         Log.i(TAG, "onErrorResponse: Didn't work");
                     }
                 }){
@@ -202,6 +211,6 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 }
