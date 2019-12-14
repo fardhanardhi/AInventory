@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -24,8 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SwitchCompat;
 
 public class MainActivity extends AppCompatActivity {
     EditText edtTitle;
@@ -44,16 +41,13 @@ public class MainActivity extends AppCompatActivity {
     String NOTIFICATION_MESSAGE;
     String TOPIC;
 
-    private static final String PREFS_NAME = "prefs";
-    private static final String PREF_DARK_THEME = "dark_theme";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+        SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
+        boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
 
-        if(useDarkTheme) {
-            setTheme(R.style.FeedActivityThemeDark);
+        if(useDarkMode) {
+            setTheme(R.style.ActivityThemeDark);
         }
 
         super.onCreate(savedInstanceState);
@@ -75,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         btViewDB = findViewById(R.id.bt_viewdata);
         toggle = findViewById(R.id.switchCompat);
 
-        toggle.setChecked(useDarkTheme);
+        toggle.setChecked(useDarkMode);
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,14 +113,14 @@ public class MainActivity extends AppCompatActivity {
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton view, boolean isChecked) {
-                toggleTheme(isChecked);
+                toggleDarkMode(isChecked);
             }
         });
     }
 
-    private void toggleTheme(boolean darkTheme) {
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+    private void toggleDarkMode(boolean darkMode) {
+        SharedPreferences.Editor editor = getSharedPreferences("SETTINGS", MODE_PRIVATE).edit();
+        editor.putBoolean("DARK_MODE", darkMode);
         editor.apply();
 
         Intent intent = getIntent();

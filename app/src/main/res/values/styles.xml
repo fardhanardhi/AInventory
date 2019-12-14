@@ -33,11 +33,11 @@
     </style>
 
     <!-- Specific Feed activity theme -->
-    <style name="FeedActivityThemeLight" parent="ActivityTheme.Primary.Base.Light">
+    <style name="ActivityThemeLight" parent="ActivityTheme.Primary.Base.Light">
         <item name="android:windowBackground">@color/white</item>
     </style>
 
-    <style name="FeedActivityThemeDark" parent="ActivityTheme.Primary.Base.Dark">
+    <style name="ActivityThemeDark" parent="ActivityTheme.Primary.Base.Dark">
         <item name="android:windowBackground">@color/primaryDark</item>
     </style>
 
