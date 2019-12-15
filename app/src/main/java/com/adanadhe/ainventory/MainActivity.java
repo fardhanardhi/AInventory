@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
     Button btViewDB;
     FloatingActionButton btnSettings;
     TextView txtTotalHarga;
+    ProgressBar progressBar;
 
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
     final private String serverKey = "key=" + "AAAA3PRkq-U:APA91bFlh3Mac-doL9VuEtRtJtZSFXDmQGSFiiUrWhMd7lJ_2iEpZ1N9OkKUOxnj9Jgs_gHgLvauU1dUlPc_ujC_6BF9kbmQElJA0-YGlUPefrJwXqSxI-kb4-_WmaHZ8wn9X_rob928";
@@ -90,12 +92,14 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
         btViewDB = findViewById(R.id.bt_viewdata);
         btnSettings = findViewById(R.id.fab_settings);
         txtTotalHarga = findViewById(R.id.total_harga);
+        progressBar = findViewById(R.id.loading_data);
 
         rvView = (RecyclerView) findViewById(R.id.rv_main);
         rvView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         rvView.setLayoutManager(layoutManager);
 
+        progressBar.setVisibility(View.VISIBLE);
 
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -128,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
                  * Inisialisasi adapter dan data barang dalam bentuk ArrayList
                  * dan mengeset Adapter ke dalam RecyclerView
                  */
+                progressBar.setVisibility(View.GONE);
+
+
                 adapter = new AdapterBarangRecyclerView(daftarBarang, MainActivity.this);
                 rvView.setAdapter(adapter);
                 txtTotalHarga.setText(String.valueOf(totalHarga));

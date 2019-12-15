@@ -13,125 +13,141 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="20dp"
-        android:src="@drawable/lambang" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/lambang" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="?attr/cardColor"
-        app:cardCornerRadius="10dp"
-        android:layout_marginHorizontal="20dp">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="?attr/cardColor"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total assets"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. "
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/total_harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="________"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:padding="10dp">
+            android:visibility="gone">
+
+
             <TextView
+                android:id="@+id/judul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total assets"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-            <LinearLayout
+                android:text="Judul"
+                android:textColor="?attr/primaryTextColor" />
+
+            <EditText
+                android:id="@+id/judulnya"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:backgroundTint="?attr/accentColor"
+                android:textColor="?attr/primaryTextColor" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. "
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:id="@+id/total_harga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="________"
-                    android:textSize="40sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/pesan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Pesan"
+                android:textColor="?attr/primaryTextColor" />
+
+            <EditText
+                android:id="@+id/pesannya"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:backgroundTint="?attr/accentColor"
+                android:textColor="?attr/primaryTextColor" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="?attr/primaryColor"
+                android:text="SUBMIT"
+                android:textColor="?attr/invertTextColor" />
+
+            <Button
+                android:id="@+id/bt_createdata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="?attr/secondaryColor"
+                android:text="Tambah Data" />
+
+            <Button
+                android:id="@+id/bt_viewdata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="?attr/secondaryColor"
+                android:text="Lihat Data" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:id="@+id/loading_data"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
+        />
 
-
-        <TextView
-            android:id="@+id/judul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Judul"
-            android:textColor="?attr/primaryTextColor" />
-
-        <EditText
-            android:id="@+id/judulnya"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="?attr/accentColor"
-            android:textColor="?attr/primaryTextColor" />
-
-        <TextView
-            android:id="@+id/pesan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Pesan"
-            android:textColor="?attr/primaryTextColor" />
-
-        <EditText
-            android:id="@+id/pesannya"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:backgroundTint="?attr/accentColor"
-            android:textColor="?attr/primaryTextColor" />
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="?attr/primaryColor"
-            android:text="SUBMIT"
-            android:textColor="?attr/invertTextColor" />
-    <Button
-        android:id="@+id/bt_createdata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="?attr/secondaryColor"
-        android:text="Tambah Data" />
-
-    <Button
-        android:id="@+id/bt_viewdata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="?attr/secondaryColor"
-        android:text="Lihat Data" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="30dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:paddingHorizontal="40dp"
-        android:paddingVertical="30dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"/>
-    </LinearLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -140,11 +156,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add_black_24dp"
-        app:layout_anchor="@id/main_linear"
-        app:layout_anchorGravity="bottom|right|end"
         android:backgroundTint="?attr/primaryColor"
-        android:tint="?attr/invertTextColor"/>
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="?attr/invertTextColor"
+        app:layout_anchor="@id/main_linear"
+        app:layout_anchorGravity="bottom|right|end" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_settings"
@@ -152,10 +168,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_settings_black_24dp"
-        app:layout_anchor="@id/main_linear"
-        app:layout_anchorGravity="bottom|left|end"
         android:backgroundTint="?attr/primaryColor"
-        android:tint="?attr/invertTextColor"/>
+        android:src="@drawable/ic_settings_black_24dp"
+        android:tint="?attr/invertTextColor"
+        app:layout_anchor="@id/main_linear"
+        app:layout_anchorGravity="bottom|left|end" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
