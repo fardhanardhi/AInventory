@@ -5,11 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_barang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="?attr/cardColor"
+        android:backgroundTint="?attr/subCardColor"
         >
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
                 android:id="@+id/tv_namabarang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/cardTextColor"
+                android:textColor="?attr/subCardTextColor"
                 android:textSize="16sp" />
         </LinearLayout>
 

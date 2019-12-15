@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBarangRecyclerView.ViewHolder> {
@@ -25,7 +26,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
          */
         daftarBarang = barangs;
         context = ctx;
-        listener = (FirebaseDBReadActivity)ctx;
+        listener = (MainActivity)ctx;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -36,10 +37,12 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
          * dan juga view nya hanyalah satu TextView
          */
         TextView tvTitle;
+        CardView cardBarang;
 
         ViewHolder(View v) {
             super(v);
             tvTitle = (TextView) v.findViewById(R.id.tv_namabarang);
+            cardBarang = (CardView) v.findViewById(R.id.card_barang);
         }
     }
 
@@ -61,7 +64,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
          */
         final String name = daftarBarang.get(position).getNama();
         System.out.println("BARANG DATA one by one "+position+daftarBarang.size());
-        holder.tvTitle.setOnClickListener(new View.OnClickListener() {
+        holder.cardBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /**
@@ -70,7 +73,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
                 context.startActivity(FirebaseDBReadSingleActivity.getActIntent((Activity) context).putExtra("data", daftarBarang.get(position)));
             }
         });
-        holder.tvTitle.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.cardBarang.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 /**
