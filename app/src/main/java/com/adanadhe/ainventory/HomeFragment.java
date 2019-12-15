@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -25,9 +31,14 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        TextView text = (TextView) rootView.findViewById(R.id.tanggal);
+
+        Date today = Calendar.getInstance().getTime();//getting date
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE, d MMMM yyyy");//formating according to my need
+        String date = formatter.format(today);
+        text.setText(date);
 
         Button button = (Button) rootView.findViewById(R.id.btnKelola);
         button.setOnClickListener(new View.OnClickListener() {
