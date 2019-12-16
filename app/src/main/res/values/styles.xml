@@ -24,6 +24,10 @@
         <item name="accentColor">#8033343B</item>
         <item name="cardColor">@color/primary</item>
         <item name="subCardColor">#BAC1CC</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <!-- Dark base activity theme -->
@@ -38,15 +42,21 @@
         <item name="accentColor">@color/primary</item>
         <item name="cardColor">#33343B</item>
         <item name="subCardColor">#141418</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <!-- Specific Feed activity theme -->
     <style name="ActivityThemeLight" parent="ActivityTheme.Primary.Base.Light">
         <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="ActivityThemeDark" parent="ActivityTheme.Primary.Base.Dark">
         <item name="android:windowBackground">@color/primaryDark</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
 </resources>
