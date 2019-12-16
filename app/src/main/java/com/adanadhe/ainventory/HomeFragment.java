@@ -49,6 +49,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageButton button2 = (ImageButton) rootView.findViewById(R.id.btnTest);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SendActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 
