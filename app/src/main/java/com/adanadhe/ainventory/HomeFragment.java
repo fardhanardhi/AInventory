@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -36,11 +36,11 @@ public class HomeFragment extends Fragment {
         TextView text = (TextView) rootView.findViewById(R.id.tanggal);
 
         Date today = Calendar.getInstance().getTime();//getting date
-        SimpleDateFormat formatter = new SimpleDateFormat("EEEE, d MMMM yyyy");//formating according to my need
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");//formating according to my need
         String date = formatter.format(today);
-        text.setText(date);
+        text.setText("THIS IS "+date.toUpperCase());
 
-        Button button = (Button) rootView.findViewById(R.id.btnKelola);
+        ImageButton button = (ImageButton) rootView.findViewById(R.id.btnKelola);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
