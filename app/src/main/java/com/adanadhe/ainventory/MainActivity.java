@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
 
     FloatingActionButton btCreateDB;
     Button btViewDB;
-    FloatingActionButton btnSettings;
+//    FloatingActionButton btnSettings;
     TextView txtTotalHarga;
     ProgressBar progressBar;
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
 
         btCreateDB = findViewById(R.id.fab_add);
         btViewDB = findViewById(R.id.bt_viewdata);
-        btnSettings = findViewById(R.id.fab_settings);
+//        btnSettings = findViewById(R.id.fab_settings);
         txtTotalHarga = findViewById(R.id.total_harga);
         progressBar = findViewById(R.id.loading_data);
 
@@ -190,12 +190,12 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
             }
         });
 
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(SettingsActivity.getActIntent(MainActivity.this));
-            }
-        });
+//        btnSettings.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(SettingsActivity.getActIntent(MainActivity.this));
+//            }
+//        });
 
 
     }

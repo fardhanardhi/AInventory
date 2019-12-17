@@ -162,16 +162,16 @@
         app:layout_anchor="@id/main_linear"
         app:layout_anchorGravity="bottom|right|end" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="16dp"
-        android:backgroundTint="?attr/primaryColor"
-        android:src="@drawable/ic_settings_black_24dp"
-        android:tint="?attr/invertTextColor"
-        app:layout_anchor="@id/main_linear"
-        app:layout_anchorGravity="bottom|left|end" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab_settings"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|center"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:backgroundTint="?attr/primaryColor"-->
+<!--        android:src="@drawable/ic_settings_black_24dp"-->
+<!--        android:tint="?attr/invertTextColor"-->
+<!--        app:layout_anchor="@id/main_linear"-->
+<!--        app:layout_anchorGravity="bottom|left|end" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

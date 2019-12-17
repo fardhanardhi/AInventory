@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ActivityThemeLight">
-        <activity android:name=".SendActivity"></activity>
+        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".SendActivity" />
         <activity android:name=".FirstActivity" />
         <activity
             android:name=".SettingsActivity"
