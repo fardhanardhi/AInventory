@@ -37,14 +37,14 @@ public class SettingFragment extends Fragment {
             }
         });
 
-//        ImageButton button2 = (ImageButton) rootView.findViewById(R.id.btnInfo);
-//        button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), SendActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        ImageButton button2 = (ImageButton) rootView.findViewById(R.id.btnInfo);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), InfoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }

@@ -13,6 +13,20 @@
         <item name="android:windowBackground">@color/primaryLogo</item>
     </style>
 
+    <!-- Base application theme for info. -->
+    <style name="AppThemeInfo" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryInfo</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/primaryInfo</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
     <!-- Light base activity theme -->
     <style name="ActivityTheme.Primary.Base.Light" parent="Theme.AppCompat.NoActionBar">
         <item name="primaryColor">@color/primary</item>
