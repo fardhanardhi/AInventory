@@ -13,6 +13,9 @@
         <attr name="accentColor" format="color" />
         <attr name="cardColor" format="color"/>
         <attr name="subCardColor" format="color"/>
+        <attr name="bottomNavBgColor" format="color"/>
+        <attr name="homeImg" format="integer"/>
+        <attr name="settingImg" format="integer"/>
     </declare-styleable>
 </resources>
 

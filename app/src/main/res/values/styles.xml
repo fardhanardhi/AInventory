@@ -43,6 +43,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="homeImg">@drawable/home_ill</item>
+        <item name="settingImg">@drawable/setting_ill</item>
+        <item name="bottomNavBgColor">#FFFFFF</item>
     </style>
 
     <!-- Dark base activity theme -->
@@ -56,11 +59,14 @@
         <item name="invertTextColor">#33343B</item>
         <item name="accentColor">@color/primary</item>
         <item name="cardColor">#33343B</item>
-        <item name="subCardColor">#141418</item>
+        <item name="subCardColor">#1D2936</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="homeImg">@drawable/home_ill_dark</item>
+        <item name="settingImg">@drawable/setting_ill_dark</item>
+        <item name="bottomNavBgColor">#1D2936</item>
     </style>
 
     <!-- Specific Feed activity theme -->

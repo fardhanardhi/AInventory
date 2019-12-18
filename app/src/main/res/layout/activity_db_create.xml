@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Tambah Data"
+        android:text="Item Data"
         android:textColor="?attr/primaryTextColor"
         />
 
@@ -27,7 +27,7 @@
         android:id="@+id/et_namabarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Barang"
+        android:hint="Item Name"
         android:inputType="text"
         android:textColor="?attr/primaryTextColor"
         android:backgroundTint="?attr/accentColor"
@@ -38,7 +38,7 @@
         android:id="@+id/et_merkbarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Merk Barang"
+        android:hint="Brand Name"
         android:inputType="text"
         android:textColor="?attr/primaryTextColor"
         android:backgroundTint="?attr/accentColor"
@@ -49,7 +49,7 @@
         android:id="@+id/et_hargabarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Harga Barang"
+        android:hint="Price"
         android:inputType="number"
         android:textColor="?attr/primaryTextColor"
         android:backgroundTint="?attr/accentColor"
@@ -60,7 +60,7 @@
         android:id="@+id/bt_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Add Item"
         android:layout_marginTop="20dp"
         android:backgroundTint="?attr/secondaryColor"/>
 

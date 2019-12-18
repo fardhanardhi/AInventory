@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_menu"
-        android:title="Menu Utama"
+        android:title="Home"
         android:icon="@drawable/logo" />
     <item android:id="@+id/action_setting"
-        android:title="Setting"
+        android:title="Preferences"
         android:icon="@drawable/ic_settings_black_24dp" />
 </menu>

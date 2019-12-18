@@ -1,23 +1,34 @@
 package com.adanadhe.ainventory;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FirstActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
+        SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
+        boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
+        boolean usePushNotification = preferences.getBoolean("PUSH_NOTIFICATION", true);
+
+        if(useDarkMode) {
+            setTheme(R.style.ActivityThemeDark);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         loadFragment(new HomeFragment());
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView = findViewById(R.id.navigation);
         // beri listener pada saat item/menu bottomnavigation terpilih
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -45,5 +56,12 @@ public class FirstActivity extends AppCompatActivity implements BottomNavigation
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        this.recreate();
+        bottomNavigationView.setSelectedItemId(R.id.action_menu);
     }
 }
