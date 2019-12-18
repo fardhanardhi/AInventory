@@ -21,7 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
         boolean usePushNotification = preferences.getBoolean("PUSH_NOTIFICATION", true);
 
-        if(useDarkMode) {
+        if (useDarkMode) {
             setTheme(R.style.ActivityThemeDark);
         }
 
@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    public static Intent getActIntent(Activity activity){
+    public static Intent getActIntent(Activity activity) {
         return new Intent(activity, SettingsActivity.class);
     }
 
@@ -62,10 +62,10 @@ public class SettingsActivity extends AppCompatActivity {
         finish();
 
         startActivity(intent);
-        this.overridePendingTransition(0,0);
+        this.overridePendingTransition(0, 0);
     }
 
-    private void togglePushNotification(boolean pushNotification){
+    private void togglePushNotification(boolean pushNotification) {
         SharedPreferences.Editor editor = getSharedPreferences("SETTINGS", MODE_PRIVATE).edit();
         editor.putBoolean("PUSH_NOTIFICATION", pushNotification);
         editor.apply();

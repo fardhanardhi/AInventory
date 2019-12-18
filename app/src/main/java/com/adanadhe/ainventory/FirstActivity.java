@@ -21,7 +21,7 @@ public class FirstActivity extends AppCompatActivity implements BottomNavigation
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
         boolean usePushNotification = preferences.getBoolean("PUSH_NOTIFICATION", true);
 
-        if(useDarkMode) {
+        if (useDarkMode) {
             setTheme(R.style.ActivityThemeDark);
         }
 

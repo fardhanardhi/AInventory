@@ -64,11 +64,6 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db_create);
 
-//        Window mWindow = getWindow();
-//        mWindow.getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         // inisialisasi fields EditText dan Button
         etNama = (EditText) findViewById(R.id.et_namabarang);
         etMerk = (EditText) findViewById(R.id.et_merkbarang);
@@ -98,13 +93,13 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
             btSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())){
+                    if (!isEmpty(etNama.getText().toString()) && !isEmpty(etMerk.getText().toString()) && !isEmpty(etHarga.getText().toString())) {
                         submitBarang(new Barang(etNama.getText().toString(), etMerk.getText().toString(), etHarga.getText().toString()));
 
                         // notif
                         TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
                         NOTIFICATION_TITLE = "Barang baru ditambahkan";
-                        NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." +  etHarga.getText().toString() + ")";
+                        NOTIFICATION_MESSAGE = etNama.getText().toString() + " " + etMerk.getText().toString() + " (Rp." + etHarga.getText().toString() + ")";
 
                         JSONObject notification = new JSONObject();
                         JSONObject notifcationBody = new JSONObject();
@@ -115,12 +110,11 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
                             notification.put("to", TOPIC);
                             notification.put("data", notifcationBody);
                         } catch (JSONException e) {
-                            Log.e(TAG, "onCreate: " + e.getMessage() );
+                            Log.e(TAG, "onCreate: " + e.getMessage());
                         }
                         sendNotification(notification);
 
-                    }
-                    else
+                    } else
                         Snackbar.make(findViewById(R.id.bt_submit), "Data barang tidak boleh kosong", Snackbar.LENGTH_LONG).show();
 
                     InputMethodManager imm = (InputMethodManager)
@@ -201,7 +195,7 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
                         Toast.makeText(FirebaseDBCreateActivity.this, "Request error", Toast.LENGTH_LONG).show();
                         Log.i(TAG, "onErrorResponse: Didn't work");
                     }
-                }){
+                }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

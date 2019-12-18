@@ -32,11 +32,6 @@ public class FirebaseDBReadSingleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db_create);
 
-//        Window mWindow = getWindow();
-//        mWindow.getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        
         etNama = (EditText) findViewById(R.id.et_namabarang);
         etMerk = (EditText) findViewById(R.id.et_merkbarang);
         etHarga = (EditText) findViewById(R.id.et_hargabarang);
@@ -48,14 +43,14 @@ public class FirebaseDBReadSingleActivity extends AppCompatActivity {
         btSubmit.setVisibility(View.GONE);
 
         Barang barang = (Barang) getIntent().getSerializableExtra("data");
-        if(barang!=null){
+        if (barang != null) {
             etNama.setText(barang.getNama());
             etMerk.setText(barang.getMerk());
             etHarga.setText(barang.getHarga());
         }
     }
 
-    public static Intent getActIntent(Activity activity){
+    public static Intent getActIntent(Activity activity) {
         return new Intent(activity, FirebaseDBReadSingleActivity.class);
     }
 }

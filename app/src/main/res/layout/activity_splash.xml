@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="?android:windowBackground">
+    android:background="?android:windowBackground"
+    tools:context=".SplashActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -17,23 +17,21 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:tint="@color/primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
         android:layout_marginBottom="10dp"
         android:src="@drawable/logo"
-        />
+        android:tint="@color/primary"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:tint="@color/primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
         android:layout_marginTop="10dp"
         android:src="@drawable/lambang"
-        />
+        android:tint="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,9 +21,6 @@ import java.util.Random;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-//import android.app.Service;
-//import android.os.IBinder;
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private final String ADMIN_CHANNEL_ID = "admin_channel";

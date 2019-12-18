@@ -16,24 +16,19 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
 
-        if(useDarkMode) {
+        if (useDarkMode) {
             setTheme(R.style.ActivityThemeDark);
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-//        Window mWindow = getWindow();
-//        mWindow.getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this,FirstActivity.class));
+                startActivity(new Intent(SplashActivity.this, FirstActivity.class));
                 finish();
             }
-        },1000);
+        }, 1000);
     }
 }

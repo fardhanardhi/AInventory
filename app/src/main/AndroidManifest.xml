@@ -14,8 +14,7 @@
         android:theme="@style/ActivityThemeLight">
         <activity android:name=".InfoActivity"></activity>
         <activity android:name=".SendActivity" />
-        <activity
-            android:name=".FirstActivity"/>
+        <activity android:name=".FirstActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />

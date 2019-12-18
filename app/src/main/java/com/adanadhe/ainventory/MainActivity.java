@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
 
     FloatingActionButton btCreateDB;
     Button btViewDB;
-//    FloatingActionButton btnSettings;
     TextView txtTotalHarga;
     ProgressBar progressBar;
 
@@ -77,20 +76,12 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
 
         setContentView(R.layout.activity_main);
 
-
-//        Window mWindow = getWindow();
-//        mWindow.getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
         edtTitle = findViewById(R.id.judulnya);
         edtMessage = findViewById(R.id.pesannya);
         final Button btnSend = findViewById(R.id.submit);
 
         btCreateDB = findViewById(R.id.fab_add);
         btViewDB = findViewById(R.id.bt_viewdata);
-//        btnSettings = findViewById(R.id.fab_settings);
         txtTotalHarga = findViewById(R.id.total_harga);
         progressBar = findViewById(R.id.loading_data);
 
@@ -148,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
                  * pengambilan data gagal dan memprint error nya
                  * ke LogCat
                  */
-                System.out.println(databaseError.getDetails()+" "+databaseError.getMessage());
+                System.out.println(databaseError.getDetails() + " " + databaseError.getMessage());
             }
         });
 
@@ -190,15 +181,6 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
                 startActivity(FirebaseDBReadActivity.getActIntent(MainActivity.this));
             }
         });
-
-//        btnSettings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(SettingsActivity.getActIntent(MainActivity.this));
-//            }
-//        });
-
-
     }
 
     @Override
@@ -252,12 +234,13 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
          * berdasarkan key barang.
          * Jika sukses akan memunculkan Toast
          */
-        if(database!=null){            database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(MainActivity.this,"success delete", Toast.LENGTH_LONG).show();
-            }
-        });
+        if (database != null) {
+            database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(MainActivity.this, "success delete", Toast.LENGTH_LONG).show();
+                }
+            });
 
         }
     }

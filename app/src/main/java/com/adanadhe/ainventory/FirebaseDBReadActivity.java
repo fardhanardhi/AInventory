@@ -48,11 +48,6 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
          */
         setContentView(R.layout.activity_db_read);
 
-//        Window mWindow = getWindow();
-//        mWindow.getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         /**
          * Inisialisasi RecyclerView & komponennya
          */
@@ -108,12 +103,12 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
                  * pengambilan data gagal dan memprint error nya
                  * ke LogCat
                  */
-                System.out.println(databaseError.getDetails()+" "+databaseError.getMessage());
+                System.out.println(databaseError.getDetails() + " " + databaseError.getMessage());
             }
         });
     }
 
-    public static Intent getActIntent(Activity activity){
+    public static Intent getActIntent(Activity activity) {
         return new Intent(activity, FirebaseDBReadActivity.class);
     }
 
@@ -126,12 +121,13 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
          * berdasarkan key barang.
          * Jika sukses akan memunculkan Toast
          */
-        if(database!=null){            database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(FirebaseDBReadActivity.this,"success delete", Toast.LENGTH_LONG).show();
-            }
-        });
+        if (database != null) {
+            database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(FirebaseDBReadActivity.this, "success delete", Toast.LENGTH_LONG).show();
+                }
+            });
 
         }
     }

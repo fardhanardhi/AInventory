@@ -12,7 +12,7 @@ public class Barang implements Serializable {
     private String harga;
     private String key;
 
-    public Barang(){
+    public Barang() {
 
     }
 
@@ -50,12 +50,12 @@ public class Barang implements Serializable {
 
     @Override
     public String toString() {
-        return " "+nama+"\n" +
-                " "+merk +"\n" +
-                " "+harga;
+        return " " + nama + "\n" +
+                " " + merk + "\n" +
+                " " + harga;
     }
 
-    public Barang(String nm, String mrk, String hrg){
+    public Barang(String nm, String mrk, String hrg) {
         nama = nm;
         merk = mrk;
         harga = hrg;

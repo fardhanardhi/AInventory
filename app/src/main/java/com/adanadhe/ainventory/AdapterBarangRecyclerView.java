@@ -20,13 +20,13 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
     private Context context;
     FirebaseDataListener listener;
 
-    public AdapterBarangRecyclerView(ArrayList<Barang> barangs, Context ctx){
+    public AdapterBarangRecyclerView(ArrayList<Barang> barangs, Context ctx) {
         /**
          * Inisiasi data dan variabel yang akan digunakan
          */
         daftarBarang = barangs;
         context = ctx;
-        listener = (MainActivity)ctx;
+        listener = (MainActivity) ctx;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,7 +63,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
          *  Menampilkan data pada view
          */
         final String name = daftarBarang.get(position).getNama();
-        System.out.println("BARANG DATA one by one "+position+daftarBarang.size());
+        System.out.println("BARANG DATA one by one " + position + daftarBarang.size());
         holder.cardBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,7 +122,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
         return daftarBarang.size();
     }
 
-    public interface FirebaseDataListener{
+    public interface FirebaseDataListener {
         void onDeleteData(Barang barang, int position);
     }
 }

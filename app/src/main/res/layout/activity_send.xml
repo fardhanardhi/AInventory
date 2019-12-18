@@ -10,63 +10,63 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Broadcast Message"
         android:layout_marginTop="40dp"
+        android:text="Broadcast Message"
         android:textColor="?attr/primaryTextColor"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <EditText
         android:id="@+id/title_pesan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="?attr/accentColor"
         android:hint="Subject"
         android:inputType="text"
         android:textColor="?attr/primaryTextColor"
-        android:backgroundTint="?attr/accentColor"
         android:textColorHint="?attr/secondaryColor"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/judul"
-        android:layout_marginHorizontal="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/judul" />
 
     <EditText
         android:id="@+id/title_isi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="?attr/accentColor"
         android:hint="Caption"
         android:inputType="text"
         android:textColor="?attr/primaryTextColor"
-        android:backgroundTint="?attr/accentColor"
         android:textColorHint="?attr/secondaryColor"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_pesan"
-        android:layout_marginHorizontal="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_pesan" />
 
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Broadcast"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="?attr/secondaryColor"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Broadcast"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_isi"
-        android:layout_marginHorizontal="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_isi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

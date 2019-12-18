@@ -65,7 +65,7 @@ public class SendActivity extends AppCompatActivity {
                     notification.put("to", TOPIC);
                     notification.put("data", notifcationBody);
                 } catch (JSONException e) {
-                    Log.e(TAG, "onCreate: " + e.getMessage() );
+                    Log.e(TAG, "onCreate: " + e.getMessage());
                 }
                 sendNotification(notification);
             }
@@ -88,7 +88,7 @@ public class SendActivity extends AppCompatActivity {
                         Toast.makeText(SendActivity.this, "Request error", Toast.LENGTH_LONG).show();
                         Log.i(TAG, "onErrorResponse: Didn't work");
                     }
-                }){
+                }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
