@@ -13,11 +13,13 @@ import androidx.preference.PreferenceFragmentCompat;
 
 public class SettingsActivity extends AppCompatActivity {
     private Switch toggle;
+    private Switch toggleNotif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences preferences = getSharedPreferences("SETTINGS", MODE_PRIVATE);
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
+        boolean usePushNotification = preferences.getBoolean("PUSH_NOTIFICATION", true);
 
         if(useDarkMode) {
             setTheme(R.style.ActivityThemeDark);
@@ -27,13 +29,22 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.settings_activity);
 
         toggle = findViewById(R.id.switchCompat);
+        toggleNotif = findViewById(R.id.switchNotif);
 
         toggle.setChecked(useDarkMode);
+        toggleNotif.setChecked(usePushNotification);
 
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton view, boolean isChecked) {
                 toggleDarkMode(isChecked);
+            }
+        });
+
+        toggleNotif.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+                togglePushNotification(isChecked);
             }
         });
     }
@@ -52,5 +63,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         startActivity(intent);
         this.overridePendingTransition(0,0);
+    }
+
+    private void togglePushNotification(boolean pushNotification){
+        SharedPreferences.Editor editor = getSharedPreferences("SETTINGS", MODE_PRIVATE).edit();
+        editor.putBoolean("PUSH_NOTIFICATION", pushNotification);
+        editor.apply();
+
     }
 }

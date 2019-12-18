@@ -59,12 +59,12 @@
                     android:text="Push Notification"
                     android:textColor="?attr/cardTextColor"
                     />
-                <TextView
-                    android:id="@+id/text_seekbar_preference"
-                    android:layout_width="0dp"
+                <Switch
+                    android:id="@+id/switchNotif"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    />
+                    android:layout_gravity="center"
+                    android:checked="true"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
