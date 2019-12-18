@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements AdapterBarangRecy
         database.child("barang").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                totalHarga = 0;
 
                 /**
                  * Saat ada data baru, masukkan datanya ke ArrayList
