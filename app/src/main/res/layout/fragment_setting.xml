@@ -12,44 +12,42 @@
         android:layout_height="match_parent"
         android:background="?android:windowBackground"
         android:gravity="center"
-        android:orientation="vertical">
-
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/lambang" />
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
-            android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:src="?attr/settingImg" />
-
-        <Button
-            android:id="@+id/btnSttng"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_primary_background"
-            android:text="Settings" />
+            android:adjustViewBounds="true"
+            android:src="?attr/settingImg"/>
 
-        <Button
-            android:id="@+id/btnInfo"
-            style="?android:attr/borderlessButtonStyle"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@android:color/transparent"
-            android:text="About"
-            android:textColor="?attr/secondaryColor" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSttng"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:background="@drawable/btn_primary_background"
+                android:text="Settings" />
+
+            <Button
+                android:id="@+id/btnInfo"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/transparent"
+                android:text="About"
+                android:textColor="?attr/secondaryColor" />
+        </LinearLayout>
     </LinearLayout>
 
 

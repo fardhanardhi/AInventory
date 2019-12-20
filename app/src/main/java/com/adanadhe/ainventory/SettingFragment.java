@@ -41,9 +41,9 @@ public class SettingFragment extends Fragment {
         boolean useDarkMode = preferences.getBoolean("DARK_MODE", false);
 
         if (useDarkMode) {
-            contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.ActivityThemeDark);
+            contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.ActivityFirstThemeDark);
         } else {
-            contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.ActivityThemeLight);
+            contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.ActivityFirstThemeLight);
         }
 
         LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);

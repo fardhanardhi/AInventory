@@ -11,8 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:windowBackground"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="?attr/homeImg"/>
 
 
         <TextView
@@ -25,42 +31,35 @@
             android:textSize="30dp"
             android:visibility="gone" />
 
-
-        <ImageView
-            android:id="@+id/logo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/lambang" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:src="?attr/homeImg" />
+            <Button
+                android:id="@+id/btnKelola"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_primary_background"
+                android:text="My Inventory" />
 
-        <Button
-            android:id="@+id/btnKelola"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_primary_background"
-            android:text="My Inventory" />
+            <Button
+                android:id="@+id/btnTest"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_primary_ghost_background"
+                android:text="Broadcast Message"
+                android:textColor="?attr/secondaryColor" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnTest"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_primary_ghost_background"
-            android:text="Broadcast Message"
-            android:textColor="?attr/secondaryColor" />
     </LinearLayout>
 
 
